@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Загрузка результатов тестирования";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("LoadTestResults", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <label for="file">Файл с результатами тестирования</label>
+        <input type="file" name="file" id="file" />
+
+        <br/>
+
+        <input class="btn btn-primary" type="submit" value="Загрузить">
+    </fieldset>
+}
+

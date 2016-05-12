@@ -1,0 +1,55 @@
+﻿@model IADIP.Models.TestViewModel
+@{
+    ViewBag.Title = "Тестирование";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Survey.Any())
+{
+    <table class="table table-hover table-responsive text-left">
+        <tr>
+            <th>
+                Вопрос
+            </th>
+            <th>
+                Варианты ответов
+            </th>
+            <th>
+                Junior
+            </th>
+            <th>
+                Middle
+            </th>
+            <th>
+                Senior
+            </th>
+        </tr>
+        @foreach (var question in Model.Survey)
+        {
+            <tr>
+                <td rowspan="@(question.Options.Count + 1)">
+                    @question.Text
+                </td>
+            </tr>
+            foreach (var option in question.Options)
+            {
+                <tr>
+                    <td>
+                        @option.Text
+                    </td>
+                    @foreach (var weight in option.Weights)
+                    {
+                        <td>
+                            @weight
+                        </td>
+                    }
+                </tr>
+            }
+        }
+    </table>
+}
+else
+{
+    @Html.Partial("EmptyTable")
+}

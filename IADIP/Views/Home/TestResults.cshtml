@@ -1,0 +1,31 @@
+﻿@model IADIP.Models.TestResultsViewModel
+@{
+    ViewBag.Title = "Результаты тестирования";
+}
+<h2>@ViewBag.Title</h2>
+
+@if (Model.TestResults.Any())
+{
+    for (int i = 0; i < Model.TestResults.Count; i++)
+    {
+        <h4>Номер респондента - @(i + 1)</h4>
+
+        <table class="table table-responsive table-hover text-left" >
+            @for (int j = 0; j < Model.TestResults[i].Count; j++)
+            {
+                <tr>
+                    <th style="width: 300px">
+                        @Model.TestHeaders[j]
+                    </th>
+                    <td>
+                        @Model.TestResults[i][j]
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}
+else
+{
+    @Html.Partial("EmptyTable")
+}
