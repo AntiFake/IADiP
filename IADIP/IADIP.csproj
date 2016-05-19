@@ -96,8 +96,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\x3dom.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\3d_plot.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Files\survey.json">
@@ -110,6 +112,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\x3dom.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\LoadTestResults.cshtml" />
     <Content Include="Views\Home\TestResults.cshtml" />
@@ -118,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\ClusterAnalysis.cs" />
     <Compile Include="Classes\Option.cs" />
     <Compile Include="Classes\Question.cs" />
     <Compile Include="Controllers\HomeController.cs" />
