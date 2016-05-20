@@ -10,21 +10,25 @@ namespace IADIP.Classes
     /// </summary>
     public static class GlobalVariables
     {
-        public static List<string> TestHeaders;
-        public static List<List<string>> TestResults;
+        public static List<string> Questions;
+        public static List<List<string>> InitialResults;
         public static List<Question> Survey;
+        public static List<Respondent> Respondents;
+        public static List<Attr> Attributes;
 
         static GlobalVariables()
         {
-            TestHeaders = new List<string>();
-            TestResults = new List<List<string>>();
+            Questions = new List<string>();
+            InitialResults = new List<List<string>>();
             Survey = new List<Question>();
+            Respondents = new List<Respondent>();
         }
 
         public static void Init()
         {
-            TestHeaders.Clear();
-            TestResults.Clear();
+            Questions.Clear();
+            InitialResults.Clear();
+            Respondents.Clear();
         }
     }
 

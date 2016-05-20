@@ -11,6 +11,6 @@ namespace IADIP.Classes
         /// <summary>
         /// Данный список состоит из трех элементов: 0 - J, 1 - M, 2 - S 
         /// </summary>
-        public List<double> Weights { get; set; }
+        public List<double> oWeights { get; set; }
     }
 }

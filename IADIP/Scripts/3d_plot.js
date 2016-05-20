@@ -1,5 +1,5 @@
 // Create a 3d scatter plot within d3 selection parent.
-function scatterPlot3d( parent, json )
+function scatterPlot3d( parent, json, jsonExpertAssessment)
 {
   var x3d = parent  
     .append("x3d")
@@ -233,6 +233,8 @@ function scatterPlot3d( parent, json )
 
   function initializeDataGrid() {
     var jsonData = JSON.parse(json.replace(/&quot;/g, '"'));
+    var jsonExpertAssessmentData = JSON.parse(jsonExpertAssessment.replace(/&quot;/g, '"'));
+
     var rows = [];
 
     for (var i = 0; i < jsonData.length; i++)
@@ -240,12 +242,10 @@ function scatterPlot3d( parent, json )
         rows.push({ x: jsonData[i].x, y: jsonData[i].y, z: jsonData[i].z, color: jsonData[i].color });
     }
 
-    // Follow the convention where y(x,z) is elevation.
-    //for (var x=-5; x<=5; x+=1) {
-    //  for (var z=-5; z<=5; z+=1) {
-    //        rows.push({ x: x, y: 0, z: z });
-    // }
-    //}
+    for (var i = 0; i < jsonExpertAssessmentData.length; i++) {
+        rows.push({ x: jsonExpertAssessmentData[i].x, y: jsonExpertAssessmentData[i].y, z: jsonExpertAssessmentData[i].z, color: jsonExpertAssessmentData[i].color });
+    }
+
     return rows;
   }
 

@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\lineChart.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\x3dom.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -108,9 +109,12 @@
     <Content Include="Scripts\d3\d3.js" />
     <Content Include="Scripts\d3\d3.min.js" />
     <Content Include="Scripts\d3\LICENSE" />
+    <Content Include="Files\res.json" />
+    <Content Include="Files\attributes.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\line-chart.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\x3dom.js" />
     <Content Include="Web.config" />
@@ -121,9 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\Attr.cs" />
     <Compile Include="Classes\ClusterAnalysis.cs" />
+    <Compile Include="Classes\DataHandler.cs" />
     <Compile Include="Classes\Option.cs" />
     <Compile Include="Classes\Question.cs" />
+    <Compile Include="Classes\Respondent.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +151,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Report.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

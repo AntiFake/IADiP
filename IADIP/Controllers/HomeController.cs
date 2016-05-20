@@ -1,80 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using IADIP.Helpers;
 using IADIP.Models;
 using IADIP.Classes;
-using System.IO;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 namespace IADIP.Controllers
 {
     public class HomeController : Controller
     {
-        public class Row
-        {
-            public double x;
-            public double y;
-            public double z;
-            public string color;
-        }
-
-        public static double[][] RandomData(int d1, int d2)
-        {
-            double[][] data = new double[d1][];
-            Random rnd = new Random();
-
-            for (int i = 0; i < d1; i++)
-            {
-                data[i] = new double[d2];
-                for (int j = 0; j < d2; j++)
-                {
-                    data[i][j] = rnd.NextDouble() * 10;
-                }
-            }
-
-            return data;
-        }
-
-        public static List<Row> GetClusteredData(double[][] data, int[] clustering, string[] colors, int numClusters)
-        {
-            List<Row> list = new List<Row>();
-
-            for (int k = 0; k < numClusters; ++k)
-            {
-                for (int i = 0; i < data.Length; ++i)
-                {
-                    int clusterID = clustering[i];
-                    if (clusterID != k) continue;
-                    for (int j = 0; j < data[i].Length; ++j)
-                    {
-                        list.Add(new Row()
-                        {
-                            color = colors[clusterID],
-                            x = data[i][0],
-                            y = data[i][1],
-                            z = data[i][2]
-                        });
-                        //if (data[i][j] >= 0.0) Console.Write(" ");
-                        //Console.Write(data[i][j].ToString("F" + decimals) + " ");
-                    }
-                }
-            }
-
-            return list;
-        }
-
-        // GET: Home
         public ActionResult Index()
         {
-            int numClusters = 3;
-
-            double[][] data = RandomData(100, 3);
-            int[] clusters = ClusterAnalysis.Cluster(data, numClusters);
-
-            ViewBag.data = JsonConvert.SerializeObject(GetClusteredData(data, clusters, new string[] { "red", "blue", "green" }, numClusters));
+            //int numClusters = 3;
+            //double[][] data = ClusterAnalysis.RandomData(100, 3);
+            //int[] clusters = ClusterAnalysis.Cluster(data, numClusters);
+            //ViewBag.data = JsonConvert.SerializeObject(ClusterAnalysis.GetClusteredData(data, clusters, new string[] { "red", "blue", "green" }, numClusters));
 
             return View();
         }
@@ -86,7 +30,7 @@ namespace IADIP.Controllers
 
         public ActionResult TestResults()
         {
-            return View(new TestResultsViewModel(GlobalVariables.TestHeaders, GlobalVariables.TestResults));
+            return View(new TestResultsViewModel(GlobalVariables.Questions, GlobalVariables.InitialResults));
         }
 
         public ActionResult LoadTestResults()
@@ -100,9 +44,118 @@ namespace IADIP.Controllers
             GlobalVariables.Init();
 
             if (file.ContentLength > 0)
-                FileHelper.LoadGoogleCsvTestResults(file.InputStream, ref GlobalVariables.TestHeaders, ref GlobalVariables.TestResults);
+                GlobalVariables.Respondents = FileHelper.LoadGoogleJson(file.InputStream);
 
-            return View("TestResults", new TestResultsViewModel(GlobalVariables.TestHeaders, GlobalVariables.TestResults));
+            GlobalVariables.Respondents = DataHandler.HandleInitialData(GlobalVariables.Respondents);
+            GlobalVariables.Attributes = FileHelper.LoadJsonAttributes(AppDomain.CurrentDomain.BaseDirectory + @"Files/attributes.json");
+
+            GlobalVariables.Respondents = DataHandler.CalculateAttributes(GlobalVariables.Respondents);
+
+            return View("TestResults", new TestResultsViewModel(GlobalVariables.Questions, GlobalVariables.InitialResults));
+        }
+
+        public ActionResult Report()
+        {
+            int index = 35;
+
+            // Общий кластерный анализ.
+            int numClusters = 3;
+            double[][] data = new double[GlobalVariables.Respondents.Count][];
+            for (int i = 0; i < GlobalVariables.Respondents.Count; i++)
+            {
+                data[i] = GlobalVariables.Respondents[i].Attributes;
+            }
+
+            int[] clusters = ClusterAnalysis.Cluster(data, numClusters);
+            List<DataRow> result = ClusterAnalysis.GetClusteredData(data, clusters, new string[] { "red", "blue", "green" }, numClusters, index);
+
+            ViewBag.attrClusteredData = JsonConvert.SerializeObject(result);
+
+            // Получение значений экспертной оценки для атрибутов.
+            List<DataRow> expertAttrAssessment = new List<DataRow>(); // 3 = JMS.
+            for (int i = 0; i < 3; i++)
+            {
+                expertAttrAssessment.Add(new DataRow());
+                for (int j = 0; j < GlobalVariables.Attributes.Count; j++)
+                {
+                    expertAttrAssessment[i].x = GlobalVariables.Attributes[j].expertAssessment[i] * index;
+                    expertAttrAssessment[i].y = GlobalVariables.Attributes[j].expertAssessment[i] * index;
+                    expertAttrAssessment[i].z = GlobalVariables.Attributes[j].expertAssessment[i] * index;
+                    expertAttrAssessment[i].color = "black";
+                }
+            }
+
+            ViewBag.expertAttrAssessment = JsonConvert.SerializeObject(expertAttrAssessment);
+
+            // Пространственная характеристика.
+            // Компания 1.
+            ViewBag.office_1 = JsonConvert.SerializeObject(result.Where(i => i.office == "1"));
+            ViewBag.office_2 = JsonConvert.SerializeObject(result.Where(i => i.office == "2"));
+
+            // Компания 2.
+            ViewBag.office_3 = JsonConvert.SerializeObject(result.Where(i => i.office == "3"));
+            ViewBag.office_4 = JsonConvert.SerializeObject(result.Where(i => i.office == "4"));
+            ViewBag.office_5 = JsonConvert.SerializeObject(result.Where(i => i.office == "5"));
+
+            // Темпоральная характеристика.
+            ViewBag.juniorTotalGrowth = JsonConvert.SerializeObject
+                (
+                    GetTemporalCharacteristics
+                    (
+                        new string[] { AppDomain.CurrentDomain.BaseDirectory + "Files/res1.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res2.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res3.json" },
+                        "J",
+                        index
+                    )
+                );
+            ViewBag.middleTotalGrowth = JsonConvert.SerializeObject
+                (
+                    GetTemporalCharacteristics
+                    (
+                        new string[] { AppDomain.CurrentDomain.BaseDirectory + "Files/res1.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res2.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res3.json" },
+                        "M",
+                        index
+
+                    )
+                );
+            ViewBag.seniorTotalGrowth = JsonConvert.SerializeObject
+                (
+                    GetTemporalCharacteristics
+                    (
+                        new string[] { AppDomain.CurrentDomain.BaseDirectory + "Files/res1.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res2.json", AppDomain.CurrentDomain.BaseDirectory + "Files/res3.json" },
+                        "S",
+                        index
+                    )
+                );
+
+            return View();
+        }
+
+        private List<DataPoint> GetTemporalCharacteristics(string[] paths, string category, int index)
+        {
+            List<Respondent> respondents = new List<Respondent>();
+            List<DataPoint> points = new List<DataPoint>();
+
+            for (int j = 0; j < paths.Length; j++)
+            {
+                respondents = FileHelper.LoadGoogleJson(paths[j]);
+                respondents = DataHandler.HandleInitialData(respondents);
+                respondents = DataHandler.CalculateAttributes(respondents);
+
+                double sum = 0.0;
+
+                var programmers = respondents.Where(i => i.Type == category).ToList();
+
+                for (int i = 0; i < programmers.Count; i++)
+                {
+                    sum += programmers[i].Attributes[0];
+                    sum += programmers[i].Attributes[1];
+                    sum += programmers[i].Attributes[2];
+                }
+
+                points.Add(new DataPoint() { month = j + 1, sum = sum * index });
+            }
+
+            return points;
         }
     }
 }

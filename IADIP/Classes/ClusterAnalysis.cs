@@ -5,6 +5,22 @@ using System.Web;
 
 namespace IADIP.Classes
 {
+    public class DataPoint
+    {
+        public double sum;
+        public int month;
+    }
+
+    public class DataRow
+    {
+        public double x;
+        public double y;
+        public double z;
+        public string color;
+        public string office;
+        public string type;
+    }
+
     public static class ClusterAnalysis
     {
         public static int[] Cluster(double[][] rawData, int numClusters)
@@ -212,6 +228,65 @@ namespace IADIP.Classes
                 }
             }
             return indexOfMin;
+        }
+
+        /// <summary>
+        /// Заполнение случайными данными массива данных.
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
+        public static double[][] RandomData(int d1, int d2)
+        {
+            double[][] data = new double[d1][];
+            Random rnd = new Random();
+
+            for (int i = 0; i < d1; i++)
+            {
+                data[i] = new double[d2];
+                for (int j = 0; j < d2; j++)
+                {
+                    data[i][j] = rnd.NextDouble() * 10;
+                }
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// Сопоставить кластеры и массив данных.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="clustering"></param>
+        /// <param name="colors"></param>
+        /// <param name="numClusters"></param>
+        /// <returns></returns>
+        public static List<DataRow> GetClusteredData(double[][] data, int[] clustering, string[] colors, int numClusters, int rate = 1)
+        {
+            List<DataRow> list = new List<DataRow>();
+
+            for (int k = 0; k < numClusters; ++k)
+            {
+                for (int i = 0; i < data.Length; ++i)
+                {
+                    int clusterID = clustering[i];
+                    if (clusterID != k) continue;
+                    for (int j = 0; j < data[i].Length; ++j)
+                    {
+                        list.Add(new DataRow()
+                        {
+                            color = colors[clusterID],
+                            x = data[i][0] * rate,
+                            y = data[i][1] * rate,
+                            z = data[i][2] * rate,
+                            office = GlobalVariables.Respondents[i].Office,
+                            type = GlobalVariables.Respondents[i].Type
+                        });
+                    }
+                }
+            }
+
+            return list;
         }
     }
 }

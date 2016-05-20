@@ -10,13 +10,13 @@ namespace IADIP.Helpers
 {
     public static class FileHelper
     {
-        public static void LoadGoogleCsvTestResults(Stream input, ref List<string> header, ref List<List<string>> results)
+        public static void LoadGoogleCsvTestResults(Stream input, ref List<string> questions, ref List<List<string>> results)
         {
             using (var reader = new StreamReader(input, Encoding.UTF8))
             {
                 string[] separator = new string[] { "\",\"" };
-                header = reader.ReadLine().Split(separator, StringSplitOptions.None).ToList();
-                header.RemoveAt(0);
+                questions = reader.ReadLine().Split(separator, StringSplitOptions.None).ToList();
+                questions.RemoveAt(0);
 
                 while (!reader.EndOfStream)
                 {
@@ -25,6 +25,51 @@ namespace IADIP.Helpers
                     results.Add(answers);
                 }
             }
+        }
+
+        /// <summary>
+        /// Загружает результаты опроса из Google Forms.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="respondents"></param>
+        /// <returns></returns>
+        public static List<Respondent> LoadGoogleJson(Stream input)
+        {
+            List<Respondent> respondents = new List<Respondent>();
+            string json = string.Empty;
+            using (var reader = new StreamReader(input, Encoding.UTF8))
+            {
+                json = reader.ReadToEnd();
+            }
+
+            return JsonConvert.DeserializeObject<List<Respondent>>(json);
+        }
+
+        public static List<Respondent> LoadGoogleJson(string path)
+        {
+            string json = string.Empty;
+            using (var reader = new StreamReader(path, Encoding.UTF8))
+            {
+                json = reader.ReadToEnd();
+            }
+
+            return JsonConvert.DeserializeObject<List<Respondent>>(json);
+        }
+
+        /// <summary>
+        /// Загружает атрибуты из json-файла.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static List<Attr> LoadJsonAttributes(string path)
+        {
+            string json = string.Empty;
+            using (var reader = new StreamReader(path))
+            {
+                json = reader.ReadToEnd();
+            }
+
+            return JsonConvert.DeserializeObject<List<Attr>>(json);
         }
 
         public static List<Question> LoadSurveyFromJson(string path)

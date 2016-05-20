@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Отчет";
+}
+
+<h2>Кластеризация по признакам</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="divPlot" style="height: 1000px"></div>
+    </div>
+</div>
+
+
+<h2>Пространственная кластеризация</h2>
+
+<h3>Компания 1</h3>
+<div class="row">
+    <div class="col-lg-6" id="container-office-1">
+        <h4>Офис 1</h4>
+
+        <div id="office_1" style="height: 500px">
+        </div>
+    </div>
+    <div class="col-lg-6" id="container-office-2">
+        <h4>Офис 2</h4>
+
+        <div id="office_2" style="height: 500px">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12" id="container-office-2">
+        <h4>Офис 3</h4>
+
+        <div id="office_3" style="height: 500px">
+        </div>
+    </div>
+</div>
+
+
+<h3>Компания 2</h3>
+<div class="row">
+    <div class="col-lg-6" id="container-office-1">
+        <h4>Офис 1</h4>
+
+        <div id="office_4" style="height: 500px">
+        </div>
+    </div>
+    <div class="col-lg-6" id="container-office-2">
+        <h4>Офис 2</h4>
+
+        <div id="office_5" style="height: 500px">
+        </div>
+    </div>
+</div>
+
+
+<h2>Темпоральная кластеризация</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <svg id="temporal" width="1000" height="500"></svg>
+    </div>
+</div>
+
+<script>
+    // Кластеризация по признакам.
+    scatterPlot3d(d3.select('#divPlot'), '@ViewBag.attrClusteredData', '@ViewBag.expertAttrAssessment');
+
+    // Компания 1.
+    scatterPlot3d(d3.select('#office_1'), '@ViewBag.office_1', '@ViewBag.expertAttrAssessment');
+    scatterPlot3d(d3.select('#office_2'), '@ViewBag.office_2', '@ViewBag.expertAttrAssessment');
+    scatterPlot3d(d3.select('#office_3'), '@ViewBag.office_3', '@ViewBag.expertAttrAssessment');
+
+    // Компания 2.
+    scatterPlot3d(d3.select('#office_4'), '@ViewBag.office_4', '@ViewBag.expertAttrAssessment');
+    scatterPlot3d(d3.select('#office_5'), '@ViewBag.office_5', '@ViewBag.expertAttrAssessment');
+
+    InitChart('#temporal', '@ViewBag.juniorTotalGrowth', '@ViewBag.middleTotalGrowth','@ViewBag.seniorTotalGrowth');
+</script>
