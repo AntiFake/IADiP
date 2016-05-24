@@ -50,10 +50,11 @@
             bottom: 20,
             left: 50
         },
-        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1, 12]),
+        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1, 3]),
         yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 15]),
         xAxis = d3.svg.axis()
-        .scale(xScale),
+        .scale(xScale)
+        .ticks(2),
         yAxis = d3.svg.axis()
         .scale(yScale)
         .orient("left");
