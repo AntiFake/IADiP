@@ -19,6 +19,14 @@ namespace IADIP.Classes
         public string color;
         public string office;
         public string type;
+
+        public double Magnitude
+        {
+            get
+            {
+                return Math.Sqrt(x * x + y * y + z * z);
+            }
+        }
     }
 
     public static class ClusterAnalysis
@@ -271,18 +279,16 @@ namespace IADIP.Classes
                 {
                     int clusterID = clustering[i];
                     if (clusterID != k) continue;
-                    for (int j = 0; j < data[i].Length; ++j)
+
+                    list.Add(new DataRow()
                     {
-                        list.Add(new DataRow()
-                        {
-                            color = colors[clusterID],
-                            x = data[i][0] * rate,
-                            y = data[i][1] * rate,
-                            z = data[i][2] * rate,
-                            office = GlobalVariables.Respondents[i].Office,
-                            type = GlobalVariables.Respondents[i].Type
-                        });
-                    }
+                        color = colors[clusterID],
+                        x = data[i][0] * rate,
+                        y = data[i][1] * rate,
+                        z = data[i][2] * rate,
+                        office = GlobalVariables.Respondents[i].Office,
+                        type = GlobalVariables.Respondents[i].Type
+                    });
                 }
             }
 

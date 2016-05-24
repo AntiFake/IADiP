@@ -51,7 +51,7 @@
             left: 50
         },
         xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1, 12]),
-        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 200]),
+        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 15]),
         xAxis = d3.svg.axis()
         .scale(xScale),
         yAxis = d3.svg.axis()
@@ -73,7 +73,7 @@
         .y(function (d) {
             return yScale(d.sum);
         })
-        .interpolate("basis");
+        .interpolate("linear");
 
     vis.append('svg:path')
         .attr('d', lineGen(jsonJuniorData))

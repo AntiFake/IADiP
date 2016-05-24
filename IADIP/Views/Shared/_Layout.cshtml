@@ -13,6 +13,13 @@
     <script src="~/Scripts/x3dom.js"></script>
     <script src="~/Scripts/3d_plot.js"></script>
     <script src="~/Scripts/line-chart.js"></script>
+    <style>
+        .shadow-container {
+            -webkit-box-shadow: -5px 5px 50px 14px rgba(0,0,0,0.75);
+            -moz-box-shadow: -5px 5px 50px 14px rgba(0,0,0,0.75);
+            box-shadow: -5px 5px 50px 14px rgba(0,0,0,0.75);
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,7 +43,7 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container body-content shadow-container">
         @RenderBody()
         <hr />
         <footer>

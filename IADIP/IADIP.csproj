@@ -131,6 +131,7 @@
     <Compile Include="Classes\Option.cs" />
     <Compile Include="Classes\Question.cs" />
     <Compile Include="Classes\Respondent.cs" />
+    <Compile Include="Classes\ResumeRaw.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
