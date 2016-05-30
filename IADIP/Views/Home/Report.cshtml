@@ -81,6 +81,126 @@
             </tr>
         </table>
 
+        <h3>Juniors</h3>
+        <table class="table table-bordered table-hover table-striped table-responsive">
+            <tr>
+                <th></th>
+                <th>
+                    Минимальное значение
+                </th>
+                <th>
+                    Среднее значение
+                </th>
+                <th>
+                    Максимальное значение
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Опыт работы
+                </th>
+                <td>@ViewBag.juniorMinExperience</td>
+                <td>@ViewBag.juniorAvgExperience</td>
+                <td>@ViewBag.juniorMaxExperience</td>
+            </tr>
+            <tr>
+                <th>
+                    Эффективность сотрудника
+                </th>
+                <td>@ViewBag.juniorMinPerformance</td>
+                <td>@ViewBag.juniorAvgPerformance</td>
+                <td>@ViewBag.juniorMaxPerformance</td>
+            </tr>
+            <tr>
+                <th>
+                    Занимаемая должность
+                </th>
+                <td>@ViewBag.juniorMinPos</td>
+                <td>@ViewBag.juniorAvgPos</td>
+                <td>@ViewBag.juniorMaxPos</td>
+            </tr>
+        </table>
+
+        <h3>Middles</h3>
+        <table class="table table-bordered table-hover table-striped table-responsive">
+            <tr>
+                <th></th>
+                <th>
+                    Минимальное значение
+                </th>
+                <th>
+                    Среднее значение
+                </th>
+                <th>
+                    Максимальное значение
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Опыт работы
+                </th>
+                <td>@ViewBag.middleMinExperience</td>
+                <td>@ViewBag.middleAvgExperience</td>
+                <td>@ViewBag.middleMaxExperience</td>
+            </tr>
+            <tr>
+                <th>
+                    Эффективность сотрудника
+                </th>
+                <td>@ViewBag.middleMinPerformance</td>
+                <td>@ViewBag.middleAvgPerformance</td>
+                <td>@ViewBag.middleMaxPerformance</td>
+            </tr>
+            <tr>
+                <th>
+                    Занимаемая должность
+                </th>
+                <td>@ViewBag.middleMinPos</td>
+                <td>@ViewBag.middleAvgPos</td>
+                <td>@ViewBag.middleMaxPos</td>
+            </tr>
+        </table>
+
+        <h3>Seniors</h3>
+        <table class="table table-bordered table-hover table-striped table-responsive">
+            <tr>
+                <th></th>
+                <th>
+                    Минимальное значение
+                </th>
+                <th>
+                    Среднее значение
+                </th>
+                <th>
+                    Максимальное значение
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Опыт работы
+                </th>
+                <td>@ViewBag.seniorMinExperience</td>
+                <td>@ViewBag.seniorAvgExperience</td>
+                <td>@ViewBag.seniorMaxExperience</td>
+            </tr>
+            <tr>
+                <th>
+                    Эффективность сотрудника
+                </th>
+                <td>@ViewBag.seniorMinPerformance</td>
+                <td>@ViewBag.seniorAvgPerformance</td>
+                <td>@ViewBag.seniorMaxPerformance</td>
+            </tr>
+            <tr>
+                <th>
+                    Занимаемая должность
+                </th>
+                <td>@ViewBag.seniorMinPos</td>
+                <td>@ViewBag.seniorAvgPos</td>
+                <td>@ViewBag.seniorMaxPos</td>
+            </tr>
+        </table>
+
         <h3>Компетенция сотрудников категории Junior</h3>
         <table class="table table-bordered table-hover table-responsive">
             <tr>
@@ -283,6 +403,86 @@
 <div class="row">
     <div class="col-lg-12">
         <svg id="temporal" width="1000" height="500"></svg>
+    </div>
+
+    
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4>Juniors</h4>
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>Интервал</th>
+                <th>Значение</th>
+                <th>Описание общего уровня квалификации</th>
+                <th>Расшифровка</th>
+            </tr>
+            <tr>
+                <td>1-2</td>
+                <td>0,33</td>
+                <td>Слабый уровень роста</td>
+                <td>Нормальная тенденция</td>
+            </tr>
+            <tr>
+                <td>2-3</td>
+                <td>-0,51</td>
+                <td>Высокий уровень падения</td>
+                <td>Прошел набор новых сотрудников</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4>Middles</h4>
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>Интервал</th>
+                <th>Значение</th>
+                <th>Описание общего уровня квалификации</th>
+                <th>Расшифровка</th>
+            </tr>
+            <tr>
+                <td>1-2</td>
+                <td>0,78</td>
+                <td>Высокий уровень роста</td>
+                <td>Нормальная тенденция</td>
+            </tr>
+            <tr>
+                <td>2-3</td>
+                <td>-0,55</td>
+                <td>Высокий уровень падения</td>
+                <td>Прошло недавнее повышение junior-ов</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4>Seniors</h4>
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>Интервал</th>
+                <th>Значение</th>
+                <th>Описание общего уровня квалификации</th>
+                <th>Расшифровка</th>
+            </tr>
+            <tr>
+                <td>1-2</td>
+                <td>0,34</td>
+                <td>Слабый уровень роста</td>
+                <td>Нормальная тенденция</td>
+            </tr>
+            <tr>
+                <td>2-3</td>
+                <td>-2,12</td>
+                <td>Высокий уровень падения</td>
+                <td>Прошло повышение middle-разработчиков в senior-ы</td>
+            </tr>
+        </table>
     </div>
 </div>
 

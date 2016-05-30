@@ -15,11 +15,6 @@ namespace IADIP.Controllers
     {
         public ActionResult Index()
         {
-            //int numClusters = 3;
-            //double[][] data = ClusterAnalysis.RandomData(100, 3);
-            //int[] clusters = ClusterAnalysis.Cluster(data, numClusters);
-            //ViewBag.data = JsonConvert.SerializeObject(ClusterAnalysis.GetClusteredData(data, clusters, new string[] { "red", "blue", "green" }, numClusters));
-
             return View();
         }
 
@@ -51,7 +46,13 @@ namespace IADIP.Controllers
 
             GlobalVariables.Respondents = DataHandler.CalculateAttributes(GlobalVariables.Respondents);
 
-            return View("TestResults", new TestResultsViewModel(GlobalVariables.Questions, GlobalVariables.InitialResults));
+            //return View("TestResults", new TestResultsViewModel(GlobalVariables.Questions, GlobalVariables.InitialResults));
+            return RedirectToAction("Report");
+        }
+
+        public ActionResult DecisionTree()
+        {
+            return View();
         }
 
         public ActionResult Report()
@@ -206,18 +207,54 @@ namespace IADIP.Controllers
             ViewBag.totalCount = result.Count();
 
             //Джуниоры
+            ViewBag.juniorMinExperience = juniors.Select(i => i.x).Min();
+            ViewBag.juniorAvgExperience = juniors.Select(i => i.x).Average();
+            ViewBag.juniorMaxExperience = juniors.Select(i => i.x).Max();
+
+            ViewBag.juniorMinPerformance = juniors.Select(i => i.y).Min();
+            ViewBag.juniorAvgPerformance = juniors.Select(i => i.y).Average();
+            ViewBag.juniorMaxPerformance = juniors.Select(i => i.y).Max();
+
+            ViewBag.juniorMinPos = juniors.Select(i => i.z).Min();
+            ViewBag.juniorAvgPos = juniors.Select(i => i.z).Average();
+            ViewBag.juniorMaxPos = juniors.Select(i => i.z).Max();
+
             var topJunior = FindMaxExtremum(juniors);
             var juniorCompetence = CalculateCompetence(topJunior, juniors);
             ViewBag.topJunior = topJunior;
             ViewBag.juniorCompetence = juniorCompetence;
 
             //Мидлы
+            ViewBag.middleMinExperience = middles.Select(i => i.x).Min();
+            ViewBag.middleAvgExperience = middles.Select(i => i.x).Average();
+            ViewBag.middleMaxExperience = middles.Select(i => i.x).Max();
+
+            ViewBag.middleMinPerformance = middles.Select(i => i.y).Min();
+            ViewBag.middleAvgPerformance = middles.Select(i => i.y).Average();
+            ViewBag.middleMaxPerformance = middles.Select(i => i.y).Max();
+
+            ViewBag.middleMinPos = middles.Select(i => i.z).Min();
+            ViewBag.middleAvgPos = middles.Select(i => i.z).Average();
+            ViewBag.middleMaxPos = middles.Select(i => i.z).Max();
+
             var topMiddle = FindMaxExtremum(middles);
             var middleCompetence = CalculateCompetence(topMiddle, middles);
             ViewBag.topMiddle = topMiddle;
             ViewBag.middleCompetence = middleCompetence;
 
             // Сеньоры
+            ViewBag.seniorMinExperience = seniors.Select(i => i.x).Min();
+            ViewBag.seniorAvgExperience = seniors.Select(i => i.x).Average();
+            ViewBag.seniorMaxExperience = seniors.Select(i => i.x).Max();
+
+            ViewBag.seniorMinPerformance = seniors.Select(i => i.y).Min();
+            ViewBag.seniorAvgPerformance = seniors.Select(i => i.y).Average();
+            ViewBag.seniorMaxPerformance = seniors.Select(i => i.y).Max();
+
+            ViewBag.seniorMinPos = seniors.Select(i => i.z).Min();
+            ViewBag.seniorAvgPos = seniors.Select(i => i.z).Average();
+            ViewBag.seniorMaxPos = seniors.Select(i => i.z).Max();
+
             var topSenior = FindMaxExtremum(seniors);
             var seniorCompetence = CalculateCompetence(topSenior, seniors);
             ViewBag.topSenior = topSenior;

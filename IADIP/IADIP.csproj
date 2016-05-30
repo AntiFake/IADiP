@@ -112,6 +112,10 @@
     <Content Include="Files\res.json" />
     <Content Include="Files\attributes.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Id3\id3.js" />
+    <Content Include="Scripts\Id3\iris_example.js" />
+    <Content Include="Scripts\Id3\jms_example.js" />
+    <Content Include="Scripts\Id3\jms_simple_example.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\line-chart.js" />
@@ -153,6 +157,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Report.cshtml" />
+    <Content Include="Views\Home\DecisionTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
