@@ -155,5 +155,20 @@ var iris_data = [
 iris_data = _(iris_data);
 var iris_features = ['sl', 'sw', 'pl', 'pw'];
 var iris_sample = [
-  { sl: 5.8, sw: 2.7, pl: 5.1, pw: 1.9, name: 'Iris-virginica' }
+    { sl: 5.8, sw: 2.7, pl: 5.1, pw: 1.9, name: 'Iris-virginica' },
+    { sl: 1.2, sw: 3.2, pl: 4.3, pw: 2.3, name: 'Iris-virginica' },
+    { sl: 6.3, sw: 2.5, pl: 5.0, pw: 1.9, name: 'Iris-virginica' },
+    { sl: 3.2, sw: 3.0, pl: 5.2, pw: 2.0, name: 'Iris-virginica' },
+    { sl: 5.5, sw: 2.4, pl: 3.7, pw: 1.0, name: 'Iris-versicolor' },
+    { sl: 5.8, sw: 2.7, pl: 3.9, pw: 1.2, name: 'Iris-versicolor' },
+    { sl: 6.0, sw: 2.7, pl: 5.1, pw: 1.6, name: 'Iris-versicolor' },
+    { sl: 6.7, sw: 3.1, pl: 4.7, pw: 1.5, name: 'Iris-versicolor' },
+    { sl: 6.3, sw: 2.3, pl: 4.4, pw: 1.3, name: 'Iris-versicolor' },
+    { sl: 5.2, sw: 3.4, pl: 1.4, pw: 0.2, name: 'Iris-setosa' },
+    { sl: 4.7, sw: 3.2, pl: 1.6, pw: 0.2, name: 'Iris-setosa' },
+    { sl: 5.5, sw: 4.2, pl: 1.4, pw: 0.2, name: 'Iris-setosa' },
+    { sl: 4.9, sw: 3.1, pl: 1.5, pw: 0.1, name: 'Iris-setosa' },
+    { sl: 5.0, sw: 3.2, pl: 1.2, pw: 0.2, name: 'Iris-setosa' },
+    { sl: 5.5, sw: 3.5, pl: 1.3, pw: 0.2, name: 'Iris-setosa' },
+    { sl: 0.9, sw: 3.1, pl: 0.1, pw: 0.1, name: 'Iris-setosa' },
 ];

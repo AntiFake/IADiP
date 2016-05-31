@@ -34,5 +34,15 @@ var jms_data = [
 jms_data = _(jms_data);
 var jms_features = ['question_2', 'question_3', 'question_4', 'question_5', 'question_6', 'question_7', 'question_8'];
 var jms_samples = [
-  
+    { question_2: '0', question_3: '0', question_4: '0', question_5: '0', question_6: '0', question_7: '0', question_8: '0', category: 'J' },
+    { question_2: '1', question_3: '2', question_4: '3', question_5: '4', question_6: '3', question_7: '2', question_8: '1', category: 'J' },
+    { question_2: '3', question_3: '2', question_4: '3', question_5: '3', question_6: '2', question_7: '4', question_8: '4', category: 'M' },
+    { question_2: '3', question_3: '1', question_4: '3', question_5: '4', question_6: '1', question_7: '2', question_8: '2', category: 'M' },
+    { question_2: '3', question_3: '3', question_4: '2', question_5: '4', question_6: '2', question_7: '1', question_8: '2', category: 'J' },
+    { question_2: '4', question_3: '1', question_4: '3', question_5: '4', question_6: '2', question_7: '4', question_8: '2', category: 'M' },
+    { question_2: '4', question_3: '2', question_4: '3', question_5: '2', question_6: '4', question_7: '3', question_8: '2', category: 'S' },
+    { question_2: '3', question_3: '3', question_4: '3', question_5: '3', question_6: '3', question_7: '3', question_8: '4', category: 'S' },
+    { question_2: '4', question_3: '2', question_4: '4', question_5: '2', question_6: '4', question_7: '4', question_8: '2', category: 'M' },
+    { question_2: '4', question_3: '0', question_4: '0', question_5: '4', question_6: '0', question_7: '4', question_8: '0', category: 'J' },
+    { question_2: '4', question_3: '2', question_4: '2', question_5: '3', question_6: '0', question_7: '3', question_8: '3', category: 'M' }
 ];
