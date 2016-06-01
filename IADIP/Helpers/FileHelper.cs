@@ -42,7 +42,18 @@ namespace IADIP.Helpers
                 json = reader.ReadToEnd();
             }
 
-            return JsonConvert.DeserializeObject<List<Respondent>>(json);
+            respondents = JsonConvert.DeserializeObject<List<Respondent>>(json);
+
+            // Сохранение реальных должностей.
+            foreach (var respondent in respondents)
+            {
+                GlobalVariables.ResearchResult.Add(new ResearchResultRow()
+                {
+                    Type = respondent.Type
+                });
+            }
+
+            return respondents;
         }
 
         public static List<Respondent> LoadGoogleJson(string path)
@@ -53,7 +64,18 @@ namespace IADIP.Helpers
                 json = reader.ReadToEnd();
             }
 
-            return JsonConvert.DeserializeObject<List<Respondent>>(json);
+            var respondents = JsonConvert.DeserializeObject<List<Respondent>>(json);
+
+            // Сохранение реальных должностей.
+            foreach (var respondent in respondents)
+            {
+                GlobalVariables.ResearchResult.Add(new ResearchResultRow()
+                {
+                    Type = respondent.Type
+                });
+            }
+
+            return respondents;
         }
 
         /// <summary>

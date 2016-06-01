@@ -15,6 +15,7 @@ namespace IADIP.Classes
         public static List<Question> Survey;
         public static List<Respondent> Respondents;
         public static List<Attr> Attributes;
+        public static List<ResearchResultRow> ResearchResult;
 
         static GlobalVariables()
         {
@@ -22,6 +23,7 @@ namespace IADIP.Classes
             InitialResults = new List<List<string>>();
             Survey = new List<Question>();
             Respondents = new List<Respondent>();
+            ResearchResult = new List<ResearchResultRow>();
         }
 
         public static void Init()
@@ -29,8 +31,7 @@ namespace IADIP.Classes
             Questions.Clear();
             InitialResults.Clear();
             Respondents.Clear();
+            ResearchResult.Clear();
         }
     }
-
-
 }

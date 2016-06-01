@@ -52,8 +52,23 @@
             e.preventDefault();
             var testModel = id3(jms_data, 'category', jms_features);
             drawGraph(testModel, 'canvas');
-            renderSamples(jms_samples, $("#samples"), testModel, 'category', jms_features);
+            var result = renderSamples(jms_samples, $("#samples"), testModel, 'category', jms_features);
             renderTrainingData(jms_data, $("#training"), 'category', jms_features);
+
+            //SaveID3Result
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SaveID3Result", "Home")',
+                data: JSON.stringify(result),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (res) {
+                    $('#research-result').css('display', 'inline');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
         });
 
         $('#fire_iris').click(function (e) {

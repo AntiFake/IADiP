@@ -55,6 +55,11 @@ namespace IADIP.Controllers
             return View();
         }
 
+        public ActionResult ResearchResult()
+        {
+            return View(new ResearchViewModel(GlobalVariables.ResearchResult));
+        }
+
         public ActionResult Report()
         {
             int index = 35;
@@ -70,6 +75,12 @@ namespace IADIP.Controllers
             int[] clusters = ClusterAnalysis.Cluster(data, numClusters);
             List<DataRow> result = ClusterAnalysis.GetClusteredData(data, clusters, new string[] { "blue", "red", "green" }, numClusters, index);
             ViewBag.attrClusteredData = JsonConvert.SerializeObject(result);
+
+            // Запись результатов кластеризации.
+            for (int i = 0; i < result.Count; i++)
+            {
+                GlobalVariables.ResearchResult[i].ClusterType = result[i].type;    
+            }
 
             // Получение значений экспертной оценки для атрибутов.
             List<DataRow> expertAttrAssessment = new List<DataRow>(); // 3 = JMS.
@@ -504,5 +515,14 @@ namespace IADIP.Controllers
         #endregion
         #endregion
 
+        [HttpPost]
+        public JsonResult SaveID3Result(List<string> result)
+        {
+            for (int i = 0; i < result.Count; i++)
+            {
+                GlobalVariables.ResearchResult[i].Id3Type = result[i];
+            }
+            return new JsonResult() { Data = "Успешно" };
+        }
     }
 }

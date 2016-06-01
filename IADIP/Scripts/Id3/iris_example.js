@@ -149,7 +149,6 @@ var iris_data = [
 { sl: 6.5, sw: 3.0, pl: 5.2, pw: 2.0, name: 'Iris-virginica' },
 { sl: 6.2, sw: 3.4, pl: 5.4, pw: 2.3, name: 'Iris-virginica' },
 { sl: 5.9, sw: 3.0, pl: 5.1, pw: 1.8, name: 'Iris-virginica' }
-
 ];
 
 iris_data = _(iris_data);

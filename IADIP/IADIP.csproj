@@ -134,6 +134,7 @@
     <Compile Include="Classes\DataHandler.cs" />
     <Compile Include="Classes\Option.cs" />
     <Compile Include="Classes\Question.cs" />
+    <Compile Include="Classes\ResearchResultRow.cs" />
     <Compile Include="Classes\Respondent.cs" />
     <Compile Include="Classes\ResumeRaw.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -142,6 +143,7 @@
     </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Classes\GlobalVariables.cs" />
+    <Compile Include="Models\ResearchModel.cs" />
     <Compile Include="Models\TestResultsViewModel.cs" />
     <Compile Include="Models\TestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +160,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Report.cshtml" />
     <Content Include="Views\Home\DecisionTree.cshtml" />
+    <Content Include="Views\Home\ResearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

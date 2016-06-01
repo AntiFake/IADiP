@@ -129,28 +129,33 @@ var addEdges = function (node, g) {
 
 var renderSamples = function (samples, $el, model, target, features) {
     var total = samples.length, nonresolved = 0, className = '';
+    result = [];
 
     _.each(samples, function (s) {
         var features_for_sample = _.map(features, function (x) { return s[x] });
         try {
             className = predict(model, s);
-            
+            result.push(className);
+
             if (className != s[target]) {
-                $el.append("<tr style=\"color: red\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + className + "</b></td><td>actual: " + s[target] + "</td></tr>");
+                $el.append("<tr style=\"color: red\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + className + "</b></td><td>" + s[target] + "</td></tr>");
                 nonresolved++;
             }
             else {
-                $el.append("<tr style=\"color: green\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + className + "</b></td><td>actual: " + s[target] + "</td></tr>");
+                $el.append("<tr style=\"color: green\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + className + "</b></td><td>" + s[target] + "</td></tr>");
             }
         }
-        catch(e) {
-            $el.append("<tr style=\"color: orange\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + '?' + "</b></td><td>actual: " + s[target] + "</td></tr>");
+        catch (e) {
+            result.push('?');
+            $el.append("<tr style=\"color: orange\"><td>" + features_for_sample.join('</td><td>') + "</td><td><b>" + '?' + "</b></td><td>" + s[target] + "</td></tr>");
             nonresolved++;
         }
-    })
+    });
 
     $el.append('<p><strong> Test data items count: ' + total + '</strong></p>')
     $el.append('<p> <strong>Error percent: ' + (nonresolved / total * 100) + '</strong></p>');
+
+    return result;
 }
 
 var renderTrainingData = function (_training, $el, target, features) {

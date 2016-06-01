@@ -1,0 +1,61 @@
+﻿@model IADIP.Models.ResearchViewModel
+@{
+    ViewBag.Title = "Результаты исследования";
+    int i = 1;
+}
+
+<style>
+    .junior {
+        background-color: limegreen;
+    }
+
+    .middle {
+        background-color: darkorange;
+    }
+
+
+    .senior {
+        background-color: indianred;
+    }
+
+    .unknown {
+        background-color: gray;    
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>
+                    № п/п
+                </th>
+                <th>
+                    Текущая должность (опрос)
+                </th>
+                <th>
+                    Должность (кластеризация)
+                </th>
+                <th>
+                    Должность (ID3)
+                </th>
+                <th>
+                    Рекомендация
+                </th>
+            </tr>
+            @foreach (var rr in Model.ResearchResult)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td class="@(rr.Type == "J" ? "junior" : (rr.Type == "M" ? "middle" : "senior"))">@rr.Type</td>
+                    <td class="@(rr.ClusterType == "J" ? "junior" : (rr.ClusterType == "M" ? "middle" : "senior"))">@rr.ClusterType</td>
+                    <td class="@(rr.Id3Type == "J" ? "junior" : (rr.Id3Type == "M" ? "middle" : (rr.Id3Type == "S" ? "senior" : "unknown")))">@rr.Id3Type</td>
+                    <td>@rr.Recommendation</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
