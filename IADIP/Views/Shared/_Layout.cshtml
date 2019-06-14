@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top bg">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,10 +33,10 @@
                 @Html.ActionLink("Главная", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Загрузить", "LoadTestResults", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Тест", "Test", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Результаты", "TestResults", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Результаты", "TestResults", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 @Html.ActionLink("Отчет", "Report", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("ID3-дерево", "DecisionTree", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Результат исследования", "ResearchResult", "Home", new { area = "" }, new { @class = "navbar-brand", @id = "research-result", @style = "display: none" })
+                @*@Html.ActionLink("ID3-дерево", "DecisionTree", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Результат исследования", "ResearchResult", "Home", new { area = "" }, new { @class = "navbar-brand", @id = "research-result", @style = "display: none" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

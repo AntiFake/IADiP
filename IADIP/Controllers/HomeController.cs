@@ -411,7 +411,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "red-tr",
-                    valueName = "Junior",
+                    valueName = "Легкие",
                     text = "Неблагоприятное распределение",
                     value = juniorCoeff,
                     number = 1
@@ -421,7 +421,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "blue-tr",
-                    valueName = "Junior",
+                    valueName = "Легкие",
                     text = "Терпимое распределение",
                     value = juniorCoeff,
                     number = 1
@@ -431,7 +431,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "green-tr",
-                    valueName = "Junior",
+                    valueName = "Легкие",
                     text = "Благоприятное распределение",
                     value = juniorCoeff,
                     number = 1
@@ -447,7 +447,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "red-tr",
-                    valueName = "Middle",
+                    valueName = "Средние",
                     text = "Неблагоприятное распределение",
                     value = middleCoeff,
                     number = 2
@@ -457,7 +457,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "blue-tr",
-                    valueName = "Middle",
+                    valueName = "Средние",
                     text = "Терпимое распределение",
                     value = middleCoeff,
                     number = 2
@@ -467,7 +467,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "green-tr",
-                    valueName = "Middle",
+                    valueName = "Средние",
                     text = "Благоприятное распределение",
                     value = middleCoeff,
                     number = 2
@@ -482,7 +482,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "red-tr",
-                    valueName = "Senior",
+                    valueName = "Тяжелые",
                     text = "Неблагоприятное распределение",
                     value = seniorCoeff,
                     number = 3
@@ -492,7 +492,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "blue-tr",
-                    valueName = "Senior",
+                    valueName = "Тяжелые",
                     text = "Терпимое распределение",
                     value = seniorCoeff,
                     number = 3
@@ -502,7 +502,7 @@ namespace IADIP.Controllers
                 rawData = new ResumeRaw()
                 {
                     className = "green-tr",
-                    valueName = "Senior",
+                    valueName = "Тяжелые",
                     text = "Благоприятное распределение",
                     value = seniorCoeff,
                     number = 3

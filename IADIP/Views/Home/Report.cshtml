@@ -26,7 +26,7 @@
             <b>Общее количество объектов:</b> @(ViewBag.totalCount)
         </p>
         <p>
-            <b>Все объекты были сгруппированы в три кластера:</b> junior (зеленый), middle (синий), senior (красный)
+            <b>Все объекты были сгруппированы в три кластера:</b> "Легкие" (зеленый), "Средние" (синий), "Тяжелые" (красный)
         </p>
         <table class="table table-bordered table-hover table-striped table-responsive">
             <tr>
@@ -34,13 +34,13 @@
                     &nbsp;
                 </th>
                 <th>
-                    Junior
+                    Легкие
                 </th>
                 <th>
-                    Middle
+                    Средние
                 </th>
                 <th>
-                    Senior
+                    Тяжелые
                 </th>
             </tr>
             <tr>
@@ -81,7 +81,7 @@
             </tr>
         </table>
 
-        <h3>Juniors</h3>
+        <h3>"Легкие" случаи</h3>
         <table class="table table-bordered table-hover table-striped table-responsive">
             <tr>
                 <th></th>
@@ -97,7 +97,7 @@
             </tr>
             <tr>
                 <th>
-                    Опыт работы
+                    Тяжесть телесных повреждений
                 </th>
                 <td>@ViewBag.juniorMinExperience</td>
                 <td>@ViewBag.juniorAvgExperience</td>
@@ -105,7 +105,7 @@
             </tr>
             <tr>
                 <th>
-                    Эффективность сотрудника
+                    Тяжесть повреждений автомобиля
                 </th>
                 <td>@ViewBag.juniorMinPerformance</td>
                 <td>@ViewBag.juniorAvgPerformance</td>
@@ -113,7 +113,7 @@
             </tr>
             <tr>
                 <th>
-                    Занимаемая должность
+                    Массовость ДТП
                 </th>
                 <td>@ViewBag.juniorMinPos</td>
                 <td>@ViewBag.juniorAvgPos</td>
@@ -121,7 +121,7 @@
             </tr>
         </table>
 
-        <h3>Middles</h3>
+        <h3>"Средние" случаи</h3>
         <table class="table table-bordered table-hover table-striped table-responsive">
             <tr>
                 <th></th>
@@ -137,7 +137,7 @@
             </tr>
             <tr>
                 <th>
-                    Опыт работы
+                    Тяжесть телесных повреждений
                 </th>
                 <td>@ViewBag.middleMinExperience</td>
                 <td>@ViewBag.middleAvgExperience</td>
@@ -145,7 +145,7 @@
             </tr>
             <tr>
                 <th>
-                    Эффективность сотрудника
+                    Тяжесть повреждений автомобиля
                 </th>
                 <td>@ViewBag.middleMinPerformance</td>
                 <td>@ViewBag.middleAvgPerformance</td>
@@ -153,7 +153,7 @@
             </tr>
             <tr>
                 <th>
-                    Занимаемая должность
+                    Массовость ДТП
                 </th>
                 <td>@ViewBag.middleMinPos</td>
                 <td>@ViewBag.middleAvgPos</td>
@@ -161,7 +161,7 @@
             </tr>
         </table>
 
-        <h3>Seniors</h3>
+        <h3>"Тяжелые" случаи</h3>
         <table class="table table-bordered table-hover table-striped table-responsive">
             <tr>
                 <th></th>
@@ -177,7 +177,7 @@
             </tr>
             <tr>
                 <th>
-                    Опыт работы
+                    Тяжесть телесных повреждений
                 </th>
                 <td>@ViewBag.seniorMinExperience</td>
                 <td>@ViewBag.seniorAvgExperience</td>
@@ -185,7 +185,7 @@
             </tr>
             <tr>
                 <th>
-                    Эффективность сотрудника
+                    Тяжесть повреждений автомобиля
                 </th>
                 <td>@ViewBag.seniorMinPerformance</td>
                 <td>@ViewBag.seniorAvgPerformance</td>
@@ -193,37 +193,19 @@
             </tr>
             <tr>
                 <th>
-                    Занимаемая должность
+                    Массовость ДТП
                 </th>
                 <td>@ViewBag.seniorMinPos</td>
                 <td>@ViewBag.seniorAvgPos</td>
                 <td>@ViewBag.seniorMaxPos</td>
             </tr>
         </table>
-
-        <h3>Компетенция сотрудников категории Junior</h3>
+        @*
+        <h3>Внутренняя классификация "легких" случаев ДТП</h3>
         <table class="table table-bordered table-hover table-responsive">
             <tr>
-                <th>Сотрудник</th>
-                <th>Уровень компетенции extremum (%)</th>
-                <th>Лингвистическая переменная</th>
-            </tr>
-            
-            @foreach (var item in ViewBag.juniorCompetence)
-            {
-                <tr class="@item.className">
-                    <td>@item.number</td>
-                    <td>@item.value</td>
-                    <td>@item.text</td>
-                </tr>
-            }
-        </table>
-
-        <h3>Компетенция сотрудников категории Middle</h3>
-        <table class="table table-bordered table-hover table-responsive">
-            <tr>
-                <th>Сотрудник</th>
-                <th>Уровень компетенции extremum (%)</th>
+                <th>Авария</th>
+                <th>Степень ущерба extremum (%)</th>
                 <th>Лингвистическая переменная</th>
             </tr>
 
@@ -237,15 +219,15 @@
             }
         </table>
 
-        <h3>Компетенция сотрудников категории Senior</h3>
+        <h3>Внутренняя классификация "средних" случаев ДТП</h3>
         <table class="table table-bordered table-hover table-responsive">
             <tr>
-                <th>Сотрудник</th>
-                <th>Уровень компетенции extremum (%)</th>
+                <th>Авария</th>
+                <th>Степень ущерба extremum (%)</th>
                 <th>Лингвистическая переменная</th>
             </tr>
 
-            @foreach (var item in ViewBag.juniorCompetence)
+            @foreach (var item in ViewBag.middleCompetence)
             {
                 <tr class="@item.className">
                     <td>@item.number</td>
@@ -255,15 +237,32 @@
             }
         </table>
 
+        <h3>Внутренняя классификация "тяжелых" случаев ДТП</h3>
+        <table class="table table-bordered table-hover table-responsive">
+            <tr>
+                <th>Сотрудник</th>
+                <th>Уровень компетенции extremum (%)</th>
+                <th>Лингвистическая переменная</th>
+            </tr>
+
+            @foreach (var item in ViewBag.seniorCompetence)
+            {
+                <tr class="@item.className">
+                    <td>@item.number</td>
+                    <td>@item.value</td>
+                    <td>@item.text</td>
+                </tr>
+            }
+        </table>*@
     </div>
 </div>
 
 <h2>Пространственное распределение</h2>
 
-<h3>Компания 1</h3>
+<h3>Страховая компания "Росгосстрах"</h3>
 <div class="row">
     <div class="col-lg-6" id="container-office-1">
-        <h4>Офис 1</h4>
+        <h4>Ленина 89</h4>
 
         <div id="office_1" style="height: 500px">
         </div>
@@ -287,7 +286,7 @@
         </table>
     </div>
     <div class="col-lg-6" id="container-office-2">
-        <h4>Офис 2</h4>
+        <h4>Карла Либкнехта 19</h4>
 
         <div id="office_2" style="height: 500px">
         </div>
@@ -314,7 +313,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12" id="container-office-2">
-        <h4>Офис 3</h4>
+        <h4>Карла Маркса 13</h4>
 
         <div id="office_3" style="height: 500px">
         </div>
@@ -341,10 +340,10 @@
 </div>
 
 
-<h3>Компания 2</h3>
+<h3>Компания "РЕСО Гарантия"</h3>
 <div class="row">
     <div class="col-lg-6" id="container-office-1">
-        <h4>Офис 1</h4>
+        <h4>Московское шоссе 86</h4>
 
         <div id="office_4" style="height: 500px">
         </div>
@@ -369,7 +368,7 @@
         </table>
     </div>
     <div class="col-lg-6" id="container-office-2">
-        <h4>Офис 2</h4>
+        <h4>Красноармейская 18</h4>
 
         <div id="office_5" style="height: 500px">
         </div>
@@ -399,92 +398,94 @@
     
 </div>
 
-<h2>Темпоральная характеристика</h2>
-<div class="row">
-    <div class="col-lg-12">
-        <svg id="temporal" width="1000" height="500"></svg>
+@*
+    <h2>Темпоральная характеристика</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <svg id="temporal" width="1000" height="500"></svg>
+        </div>
+
+
     </div>
 
-    
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <h4>Juniors</h4>
-        <table class="table table-bordered table-hover table-responsive">
-            <tr>
-                <th>Интервал</th>
-                <th>Значение</th>
-                <th>Описание общего уровня квалификации</th>
-                <th>Расшифровка</th>
-            </tr>
-            <tr>
-                <td>1-2</td>
-                <td>0,33</td>
-                <td>Слабый уровень роста</td>
-                <td>Нормальная тенденция</td>
-            </tr>
-            <tr>
-                <td>2-3</td>
-                <td>-0,51</td>
-                <td>Высокий уровень падения</td>
-                <td>Прошел набор новых сотрудников</td>
-            </tr>
-        </table>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Juniors</h4>
+            <table class="table table-bordered table-hover table-responsive">
+                <tr>
+                    <th>Интервал</th>
+                    <th>Значение</th>
+                    <th>Описание общего уровня квалификации</th>
+                    <th>Расшифровка</th>
+                </tr>
+                <tr>
+                    <td>1-2</td>
+                    <td>0,33</td>
+                    <td>Слабый уровень роста</td>
+                    <td>Нормальная тенденция</td>
+                </tr>
+                <tr>
+                    <td>2-3</td>
+                    <td>-0,51</td>
+                    <td>Высокий уровень падения</td>
+                    <td>Прошел набор новых сотрудников</td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h4>Middles</h4>
-        <table class="table table-bordered table-hover table-responsive">
-            <tr>
-                <th>Интервал</th>
-                <th>Значение</th>
-                <th>Описание общего уровня квалификации</th>
-                <th>Расшифровка</th>
-            </tr>
-            <tr>
-                <td>1-2</td>
-                <td>0,78</td>
-                <td>Высокий уровень роста</td>
-                <td>Нормальная тенденция</td>
-            </tr>
-            <tr>
-                <td>2-3</td>
-                <td>-0,55</td>
-                <td>Высокий уровень падения</td>
-                <td>Прошло недавнее повышение junior-ов</td>
-            </tr>
-        </table>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Middles</h4>
+            <table class="table table-bordered table-hover table-responsive">
+                <tr>
+                    <th>Интервал</th>
+                    <th>Значение</th>
+                    <th>Описание общего уровня квалификации</th>
+                    <th>Расшифровка</th>
+                </tr>
+                <tr>
+                    <td>1-2</td>
+                    <td>0,78</td>
+                    <td>Высокий уровень роста</td>
+                    <td>Нормальная тенденция</td>
+                </tr>
+                <tr>
+                    <td>2-3</td>
+                    <td>-0,55</td>
+                    <td>Высокий уровень падения</td>
+                    <td>Прошло недавнее повышение junior-ов</td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h4>Seniors</h4>
-        <table class="table table-bordered table-hover table-responsive">
-            <tr>
-                <th>Интервал</th>
-                <th>Значение</th>
-                <th>Описание общего уровня квалификации</th>
-                <th>Расшифровка</th>
-            </tr>
-            <tr>
-                <td>1-2</td>
-                <td>0,34</td>
-                <td>Слабый уровень роста</td>
-                <td>Нормальная тенденция</td>
-            </tr>
-            <tr>
-                <td>2-3</td>
-                <td>-2,12</td>
-                <td>Высокий уровень падения</td>
-                <td>Прошло повышение middle-разработчиков в senior-ы</td>
-            </tr>
-        </table>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Seniors</h4>
+            <table class="table table-bordered table-hover table-responsive">
+                <tr>
+                    <th>Интервал</th>
+                    <th>Значение</th>
+                    <th>Описание общего уровня квалификации</th>
+                    <th>Расшифровка</th>
+                </tr>
+                <tr>
+                    <td>1-2</td>
+                    <td>0,34</td>
+                    <td>Слабый уровень роста</td>
+                    <td>Нормальная тенденция</td>
+                </tr>
+                <tr>
+                    <td>2-3</td>
+                    <td>-2,12</td>
+                    <td>Высокий уровень падения</td>
+                    <td>Прошло повышение middle-разработчиков в senior-ы</td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
+*@
 
 <script>
     // Кластеризация по признакам.
